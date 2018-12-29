@@ -1,5 +1,378 @@
 # Game Development Blackboard
 
+## 2018-12-01 星期六
+
+### Unity 日志保存位置
+
+**Mac OS X**
+
+`~/Library/Logs/Unity/Editor.log`
+
+**Windows**
+
+`C:\Users\username\AppData\Local\Unity\Editor\Editor.log`
+
+## 2018-09-29 星期六
+
+### C# 编码约定
+
+* [C# 编码约定 - Microsoft](https://docs.microsoft.com/zh-cn/dotnet/csharp/programming-guide/inside-a-program/coding-conventions)
+* [C# 编码规范 - GitHub](https://gist.github.com/zhuqling/a2700703d088b8746f0c)
+
+## 2018-09-19 星期三
+
+### Unity 物理系统问题
+
+* [TRANSFORM.POSITION() VALUES BECOMES TO NAN WHEN ONE GAMEOBJECT ROTATES WHILE COLLIDING THE EDGE OF ANOTHER GAMEOBJECT - Unity Issue Tracker](https://issuetracker.unity3d.com/issues/transform-dot-position-values-becomes-to-nan-when-one-gameobject-rotates-while-colliding-the-edge-of-another-gameobject)
+
+> Solution was easy. Simply disable PCM in PhysicsManager!
+
+* [What is the error "infinity or nan float numbers appear when calculating matrices for collider"? - Unity Forums](https://forum.unity.com/threads/what-is-the-error-infinity-or-nan-float-numbers-appear-when-calculating-matrices-for-collider.346132/)
+
+* [infinity or nan floating point numbers appear when calculating matrices for collider - Unity Forums](https://forum.unity.com/threads/infinity-or-nan-floating-point-numbers-appear-when-calculating-matrices-for-collider.318207/)
+
+* [Physics Manager - Unity Documentation](https://docs.unity3d.com/Manual/class-PhysicsManager.html)
+
+> **Enable PCM**
+
+> Tick this checkbox to enable the persistent contacts manifold (PCM) contacts generation method of the physics engine. This means that fewer contacts are regenerated every physics frame, and more contact data is shared across frames. The PCM contacts generation path is also more accurate, and usually produces better collision feedback in most of the cases. See Nvidia documentation on Persistent Contact Manifold for more information. 
+> Note: Before Unity 5.5, Unity used a contacts generation method called SAT, based on the separating axis theorem (see dyn4j.org’s guide to SAT). PCM is more efficient, but for older projects, you might find it easier to continue using SAT, to avoid needing to retweak physics slightly. PCM can result in a slightly different bounce, and fewer useless contacts end up in the contacts buffers (that is, the arrays you get in the Collision instance passed to OnCollisionEnter, OnCollisionStay, OnCollisionExit).
+
+### Android Debug Bridge 的使用
+
+* [ADB Shell 下载官网](http://adbshell.com/downloads)
+* [Android environment setup - Unity Documentation](https://docs.unity3d.com/Manual/android-sdksetup.html)
+* [adb 工具使用简介 - CSDN](https://blog.csdn.net/guotianqing/article/details/79173270)
+* [使用 adb logcat 查看在 Android 真机上 Unity Debug.Log 日志 - 简书](https://www.jianshu.com/p/ab0139da5e39)
+* [使用 adb 将 Android 日志输出到文件并查看 - CSDN](https://blog.csdn.net/qq_25806863/article/details/54137707)
+* [使用 Unity 开发 Android 的几种调试方法 - cnblogs](https://www.cnblogs.com/zhaoqingqing/p/3554123.html)
+* [logcat 命令行工具 - Android Developers](https://developer.android.com/studio/command-line/logcat)
+
+**常用的 adb 命令：**
+
+```shell
+# 查看已连接的设备列表
+adb devices
+# 通过 IP 和端口号连接到指定设备
+adb connect 127.0.0.1:7555
+# 清除所有旧的日志
+adb logcat -c
+# 将最新的 Unity 日志 dump 到指定文件中
+adb logcat -s Unity -d > c:/adblog.txt
+# 将日志持续输出到指定文件中
+adb logcat -s Unity > c:/adblog.txt
+```
+
+* [Android 各模拟器的 adb 连接端口 - CSDN](https://blog.csdn.net/boyStray/article/details/81221865)
+
+![](media/15374373330373.jpg)
+
+* [TTEmulatorPortFinder 扫描各模拟器的 adb 连接端口 - 码云](https://gitee.com/tp7309/TTEmulatorPortFinder)
+
+### LogViewer 日志查看工具
+
+* [LogViewer](http://uvviewsoft.com/logviewer/index.htm)
+
+## 2018-09-12 星期三
+
+### 游戏引擎
+
+* [游戏引擎技术点滴 - 顾路的博客](http://gulu-dev.com/post/2017-01-15-game-engine-talk-2016)
+
+## 2018-09-11 星期二
+
+### 弱网模拟工具 clumsy
+
+* [clumsy - GitHub](https://github.com/jagt/clumsy)
+* [差网络模拟工具 - clumsy](https://blog.csdn.net/cnhk1225/article/details/53300607)
+
+### C# 中获取毫秒数
+
+* [C# 的时间函数：自 1970.1.1 起至今的毫秒数 - cnblogs](https://www.cnblogs.com/yangyxd/articles/5318899.html)
+
+## 2018-08-23 星期四
+
+### finally in Java
+
+* [Does finally always execute in Java? Yes! - stack overflow](https://stackoverflow.com/questions/65035/does-finally-always-execute-in-java)
+
+### GC in Java
+
+* [Java 内存泄露详解（原因、例子及解决） - CSDN](https://blog.csdn.net/anxpp/article/details/51325838)
+* [深入理解 Java 垃圾回收机制 - cnblogs](https://www.cnblogs.com/sunniest/p/4575144.html)
+* [Java 代码内存泄露分析 - cnblogs](https://www.cnblogs.com/liuroy/p/6442888.html)
+* [Java 内存泄露分析和解决 - 简书](https://www.jianshu.com/p/54b5da7c6816)
+
+### MonoBehaviour 单例和 DontDestroyOnLoad
+
+* [DontDestroyOnLoad duplicate object when using a singleton - Unity Answers](https://answers.unity.com/questions/408518/dontdestroyonload-duplicate-object-in-a-singleton.html)
+
+### Unity 场景加载完毕回调
+
+* [Since OnLevelWasLoaded is deprecated (in 5.4.0b15) What should be use instead? - Unity Answers](https://answers.unity.com/questions/1174255/since-onlevelwasloaded-is-deprecated-in-540b15-wha.html)
+* [Where is OnLevelWasLoaded on Unity 5? - stack overflow](https://stackoverflow.com/questions/39801130/where-is-onlevelwasloaded-on-unity-5)
+
+```csharp
+using UnityEngine.SceneManagement;
+void OnEnable()
+{
+    //Tell our 'OnLevelFinishedLoading' function to start listening for a scene change as soon as this script is enabled.
+    SceneManager.sceneLoaded += OnLevelFinishedLoading;
+}
+
+void OnDisable()
+{
+    //Tell our 'OnLevelFinishedLoading' function to stop listening for a scene change as soon as this script is disabled. Remember to always have an unsubscription for every delegate you subscribe to!
+    SceneManager.sceneLoaded -= OnLevelFinishedLoading;
+}
+
+void OnLevelFinishedLoading(Scene scene, LoadSceneMode mode)
+{
+    Debug.Log("Level Loaded");
+    Debug.Log(scene.name);
+    Debug.Log(mode);
+}
+```
+
+## 2018-08-21 星期二
+
+### C# Reference Docs
+
+* [csharp refdocs](http://www1.cs.columbia.edu/~lok/csharp/refdocs/)
+
+### Java 与 C# 的类型
+
+* [Java 基本数据类型总结 - cnblogs](https://www.cnblogs.com/doit8791/archive/2012/05/25/2517448.html)
+
+```
+byte：8位，最大存储数据量是255，存放的数据范围是-128~127之间
+short：16位，最大数据存储量是65536，数据范围是-32768~32767之间
+int：32位，最大数据存储容量是2的32次方减1，数据范围是负的2的31次方到正的2的31次方减1
+long：64位，最大数据存储容量是2的64次方减1，数据范围为负的2的63次方到正的2的63次方减1
+float：32位，数据范围在3.4e-45~1.4e38，直接赋值时必须在数字后加上f或F
+double：64位，数据范围在4.9e-324~1.8e308，赋值时可以加d或D也可以不加
+boolean：只有true和false两个取值
+char：16位，存储Unicode码，用单引号赋值
+```
+
+* [C# 类型和变量 - Microsoft](https://docs.microsoft.com/zh-cn/dotnet/csharp/tour-of-csharp/types-and-variables)
+
+```
+有符号的整型
+sbyte：8 位，介于 -128 到 127 之间
+short：16 位，介于 -32,768 到 32,767 之间
+int：32 位，介于 -2,147,483,648 到 2,147,483,647 之间
+long：64 位，介于 -9,223,372,036,854,775,808 到 9,223,372,036,854,775,807 之间
+
+无符号的整型
+byte：8 位，介于 0 到 255 之间
+ushort：16 位，介于 0 到 65,535 之间
+uint：32 位，介于 0 到 4,294,967,295 之间
+ulong：64 位，介于 0 到 18,446,744,073,709,551,615 之间
+
+浮点
+float：32 位，介于 1.5 × 10-45 到 3.4 × 1038 之间，7 位精度
+double：64 位，介于 5.0 × 10-324 到 1.7 × 10308 之间，15 位精度
+
+十进制
+decimal：128 位，至少介于 -7.9 × 10-28 到 7.9 × 1028 之间，至少为 28 位精度
+```
+
+### C# 的字节操作工具类 BitConverter
+
+使用 `System.BitConverter` 在所有基本数值类型和 byte 类型之间相互转换。
+
+### C# 中的字节集合工具类 MemoryStream
+
+使用 `System.IO.MemoryStream` 操作字节数组
+
+* [byte collection based similar with ByteBuffer from java - stack overflow](https://stackoverflow.com/questions/10078348/byte-collection-based-similar-with-bytebuffer-from-java)
+
+### 将 long 数值装换为十六进制字符串显示
+
+* [Standard Numeric Format Strings - Microsoft Docs](https://docs.microsoft.com/en-us/dotnet/standard/base-types/standard-numeric-format-strings)
+* [Convert long into hexadecimal string - stack overflow](https://stackoverflow.com/questions/26956025/convert-long-into-hexadecimal-string-like-a-memory-address)
+
+```csharp
+Console.WriteLine(string.Format("{0:X}", 5488461193L));
+```
+
+## 2018-08-17 星期五
+
+### Unity 中定位 C# 脚本中的死循环
+
+* [Unity 中如何中断 C# 脚本的无限循环 - CSDN](https://blog.csdn.net/suifcd/article/details/51755131)
+
+## 2018-07-24 星期二
+
+### 优化 NGUI 堆内存分配
+
+[如何大幅优化 NGUI 的堆内存分配 - 侑虎科技](https://mp.weixin.qq.com/s?__biz=MzI3MzA2MzE5Nw==&mid=2668910742&idx=1&sn=227d7dcb7f7c5cbbbf689ddcd4129ac4&chksm=f1c9f4e4c6be7df2d9b6a379e845d3c067fdb3426cee05bb14c472f7f3848c1f4d513c6b87b4&mpshare=1&scene=1&srcid=0724iF1knRhhu7KkvKZReFZX#rd)
+
+### 通用 Java 程序启动脚本
+
+[linux 下通用的 Java 程序启动脚本 - 博客园](http://www.cnblogs.com/langtianya/p/4164151.html)
+
+> shell 脚本最后部分有语法错误，需留意！
+
+**简化注释版本的 shell 脚本如下：**
+
+```shell
+#!/bin/sh
+
+#############################################
+#环境变量及 JVM 参数设置
+#############################################
+
+#JDK所在路径
+JAVA_HOME=/Users/developer/dev/jdk1.8.0_181
+
+#执行程序使用的系统用户（不推荐使用 root）
+RUNNING_USER=root
+
+#Java程序所在路径（classes的上一级目录）
+APP_HOME=/Users/developer/dev/jdk1.8.0_181/bin/robot
+
+#需要启动的Java主程序（main方法类）
+APP_MAINCLASS=com.tc.performance.Test
+
+#拼接CLASSPATH参数，包括项目引用的所有jar包
+CLASSPATH=$APP_HOME/classes
+for i in "$APP_HOME"/lib/*.jar; do
+    CLASSPATH="$CLASSPATH":"$i"
+done
+
+#日志文件路径
+LOG_FILE=$APP_HOME/logs/`date +%Y%m%d%H%M%S`.log
+touch ${LOG_FILE}
+
+#Java虚拟机启动参数
+JAVA_OPTS="-ms128m -mx128m -Xmn64m -Djava.awt.headless=true -XX:MaxPermSize=64m"
+
+#############################################
+#（函数）判断程序是否已启动
+#############################################
+
+psid=0
+
+checkpid() {
+   javaps=`$JAVA_HOME/bin/jps -l | grep $APP_MAINCLASS`
+   if [ -n "$javaps" ]; then
+      psid=`echo $javaps | awk '{print $1}'`
+   else
+      psid=0
+   fi
+}
+
+#############################################
+#（函数）启动程序
+#############################################
+
+start() {
+   checkpid
+   if [ $psid -ne 0 ]; then
+      echo "================================"
+      echo "warn: $APP_MAINCLASS already started! (pid=$psid)"
+      echo "================================"
+   else
+      echo -n "Starting $APP_MAINCLASS ..."
+      JAVA_CMD="nohup $JAVA_HOME/bin/java $JAVA_OPTS -classpath $CLASSPATH $APP_MAINCLASS >${LOG_FILE} 2>&1 &"
+      su - $RUNNING_USER -c "$JAVA_CMD"
+      checkpid
+      if [ $psid -ne 0 ]; then
+         echo "(pid=$psid) [OK]"
+         echo "================================"
+         tail -f ${LOG_FILE}
+      else
+         echo "[Failed]"
+      fi
+   fi
+}
+
+#############################################
+#（函数）停止程序
+#############################################
+
+stop() {
+   checkpid
+   if [ $psid -ne 0 ]; then
+      echo -n "Stopping $APP_MAINCLASS ...(pid=$psid) "
+      su - $RUNNING_USER -c "kill -9 $psid"
+      if [ $? -eq 0 ]; then
+         echo "[OK]"
+      else
+         echo "[Failed]"
+      fi
+      checkpid
+      if [ $psid -ne 0 ]; then
+         stop
+      fi
+   else
+      echo "================================"
+      echo "warn: $APP_MAINCLASS is not running"
+      echo "================================"
+   fi
+}
+
+#############################################
+#（函数）检查程序运行状态
+#############################################
+
+status() {
+   checkpid
+   if [ $psid -ne 0 ];  then
+      echo "$APP_MAINCLASS is running! (pid=$psid)"
+   else
+      echo "$APP_MAINCLASS is not running"
+   fi
+}
+
+#############################################
+#（函数）打印系统环境参数
+#############################################
+
+info() {
+   echo "System Information:"
+   echo "****************************"
+   echo `head -n 1 /etc/issue`
+   echo `uname -a`
+   echo
+   echo "JAVA_HOME=$JAVA_HOME"
+   echo `$JAVA_HOME/bin/java -version`
+   echo
+   echo "APP_HOME=$APP_HOME"
+   echo "APP_MAINCLASS=$APP_MAINCLASS"
+   echo "****************************"
+}
+
+#############################################
+#根据第一个参数执行相应操作
+#############################################
+
+case "$1" in
+   'start')
+      start
+      ;;
+   'stop')
+      stop
+      ;;
+   'restart')
+      stop
+      start
+      ;;
+   'status')
+      status
+      ;;
+   'info')
+      info
+      ;;
+      *)
+   echo "Usage: $0 {start|stop|restart|status|info}"
+   exit 1
+   ;;
+esac
+```
+
 ## 2018-06-27 星期三
 
 ### Java 读写文件
@@ -96,7 +469,10 @@ var 可以理解为匿名类型，是一个声明变量的占位符，主要用�
 ### ECS 架构
 
 * [《守望先锋》架构设计与网络同步 - GAD](http://gad.qq.com/article/detail/28682)
+* [《守望先锋》中的网络脚本化的武器和技能系统 - GAD](http://gad.qq.com/article/detail/28219)
+* [Networking Scripted Weapons and Abilities in Overwatch - GDC Vault](https://www.gdcvault.com/play/1024653/Networking-Scripted-Weapons-and-Abilities)
 * [浅谈《守望先锋》中的 ECS 架构 - 云风的 BLOG](https://blog.codingnow.com/2017/06/overwatch_ecs.html)
+* [GDC 2017 技术选荐合辑 - 知乎专栏](https://zhuanlan.zhihu.com/p/25703934)
 
 ### Unity 框架
 
@@ -471,7 +847,7 @@ CREATE TABLE `player` (
 ## 2017-09-15 星期五
 
 ### C# decompile
-* [推荐.Net、C# 逆向反编译四大工具利器](http://blog.csdn.net/kongwei521/article/details/54927689)
+* [推荐.Net、C# 逆向反编译四大工具利器](http://blog.csdn.net/kongwei521/article/details/54927689)
 
 ## 2017-09-12 星期二
 
